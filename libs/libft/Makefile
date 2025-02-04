@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 16:51:42 by mmaksymi          #+#    #+#              #
-#    Updated: 2025/01/19 10:50:39 by mmaksymi         ###   ########.fr        #
+#    Updated: 2025/02/03 12:23:27 by mmaksymi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Werror -Wextra -Wno-unused-but-set-variable
+CFLAGS = -Wall -Werror -Wextra #-Wno-unused-but-set-variable
 
 SRCS = ft_isalpha.c \
        ft_isdigit.c \

@@ -3,18 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 16:51:42 by mmaksymi          #+#    #+#              #
-#    Updated: 2025/01/24 13:20:37 by mmaksymi         ###   ########.fr        #
+#    Updated: 2025/02/04 11:37:13 by mmaksymi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Werror -Wextra -Wno-unused-but-set-variable
+CFLAGS = -Wall -Werror -Wextra #-Wno-unused-but-set-variable
 
 NAME = pipex
 
-SRCS = 
+SRCS = srcs/main.c \
+		srcs/utils.c \
+		srcs/arg_pars.c
 	
 OFILES = $(SRCS:.c=.o)
 
