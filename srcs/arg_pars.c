@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:10:26 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/02/04 14:27:06 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:57:30 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_arg_pars(int cmd, char **line, t_pipex *pipex)
 	}
 }
 
-void	ft_cmd_pars(int ac, char **av, t_pipex *pipex)
+static void	ft_cmd_pars(int ac, char **av, t_pipex *pipex)
 {
 	int	count;
 	int	arg_pos;
