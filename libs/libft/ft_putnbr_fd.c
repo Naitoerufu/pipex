@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaksymi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:49:37 by mmaksymi          #+#    #+#             */
-/*   Updated: 2024/11/08 14:14:57 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:04:34 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ void	ft_fill(int input, int size, char *out)
 	}
 }
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
 	char	out[10];
 	int		size;
 	int		num;
 
 	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
+		return (write(fd, "-2147483648", 11));
 	else if (n == 0)
 	{
 		out[0] = '0';
-		write(fd, out, 1);
+		return (write(fd, out, 1));
 	}
 	else
 	{
@@ -61,6 +61,6 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_fill(n, size, out);
 		if (n < 0)
 			size++;
-		write(fd, out, size);
+		return (write(fd, out, size));
 	}
 }

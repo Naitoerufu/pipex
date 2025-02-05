@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 10:52:42 by mmaksymi          #+#    #+#             */
-/*   Updated: 2024/12/04 13:42:52 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:06:19 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*ft_itohex(unsigned int num)
 	return (out);
 }
 
-int	ft_puthex(unsigned int num, int lowercase)
+int	ft_puthex(unsigned int num, int lowercase, int fd)
 {
 	char	*s;
 	int		out;
@@ -55,7 +55,7 @@ int	ft_puthex(unsigned int num, int lowercase)
 	out = 0;
 	s = NULL;
 	if (num == 0)
-		out = ft_putchar('0');
+		out = ft_putchar_fd('0', fd);
 	else
 	{
 		s = ft_itohex(num);
@@ -63,7 +63,7 @@ int	ft_puthex(unsigned int num, int lowercase)
 			return (0);
 		if (lowercase > 0)
 			ft_strtolower(s);
-		out = ft_putstr(s);
+		out = ft_putstr_fd(s, fd);
 	}
 	free(s);
 	return (out);

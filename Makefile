@@ -6,7 +6,7 @@
 #    By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 16:51:42 by mmaksymi          #+#    #+#              #
-#    Updated: 2025/02/04 11:37:13 by mmaksymi         ###   ########.fr        #
+#    Updated: 2025/02/05 11:36:22 by mmaksymi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME = pipex
 
 SRCS = srcs/main.c \
 		srcs/utils.c \
-		srcs/arg_pars.c
+		srcs/arg_pars.c \
+		srcs/files.c
 	
 OFILES = $(SRCS:.c=.o)
 
