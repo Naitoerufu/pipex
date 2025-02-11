@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:24:24 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/02/06 14:08:25 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:21:33 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 typedef struct s_pipex
 {
+	int		ac;
 	int		fd_in;
 	int		fd_out;
 	char	*infile;

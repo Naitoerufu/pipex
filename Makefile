@@ -6,11 +6,11 @@
 #    By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 16:51:42 by mmaksymi          #+#    #+#              #
-#    Updated: 2025/02/06 11:37:29 by mmaksymi         ###   ########.fr        #
+#    Updated: 2025/02/11 12:27:06 by mmaksymi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Werror -Wextra -Wno-unused-but-set-variable
+CFLAGS = -Wall -Werror -Wextra #-Wno-unused-but-set-variable
 
 NAME = pipex
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:23:46 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/02/06 11:37:13 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:45:25 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	ft_init(t_pipex *pipex)
 {
+	pipex->ac = 0;
 	pipex->cmd = NULL;
 	pipex->cmd_args = NULL;
 	pipex->fd_in = 0;
@@ -45,19 +46,8 @@ int	main(int ac, char **av)
 
 	ft_init(&pipex);
 	ft_pars(ac, av, &pipex);
-	for (int i = 0; pipex.cmd[i]; i++)
-	{
-		ft_printf(1, "cmd: %s\n", pipex.cmd[i]);
-		ft_printf(1, "args: ");
-		for (int j = 0; pipex.cmd_args[i][j]; j++)
-		{
-			ft_printf(1, "%s, ", pipex.cmd_args[i][j]);
-		}
-		ft_printf(1, "\n\n");
-	}
-	ft_printf(1, "infile: %s\noutfile: %s\n\n", pipex.infile, pipex.outfile);
 	ft_open(&pipex);
-	ft_main(&pipex, 0);
+	ft_main(&pipex, ac);
 	ft_free(&pipex);
 	close(pipex.fd_in);
 	close(pipex.fd_out);

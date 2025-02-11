@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:10:26 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/02/05 16:59:32 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:22:01 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	ft_cmd_pars(int ac, char **av, t_pipex *pipex)
 	int		arg_pos;
 	char	**tmp;
 
+	pipex->ac = ac;
 	count = 0;
 	arg_pos = 2;
 	while (arg_pos < ac - 1)
