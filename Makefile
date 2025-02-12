@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 16:51:42 by mmaksymi          #+#    #+#              #
-#    Updated: 2025/02/11 12:27:06 by mmaksymi         ###   ########.fr        #
+#    Updated: 2025/02/12 16:03:17 by mmaksymi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ NAME = pipex
 SRCS = srcs/main.c \
 		srcs/utils.c \
 		srcs/arg_pars.c \
-		srcs/files.c \
 		srcs/main_part.c
 	
 OFILES = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:10:26 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/02/11 14:22:01 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:55:34 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 static void	ft_arg_pars(int cmd, char **line, t_pipex *pipex)
 {
 	int	count;
+	int	wc;
 
 	count = 0;
-	pipex->cmd_args[cmd] = malloc(sizeof(char *) * (ft_word_count(line) + 1));
+	wc = ft_word_count(line);
+	pipex->cmd_args[cmd] = malloc(sizeof(char *) * wc + 1);
 	while (line[count])
 	{
 		pipex->cmd_args[cmd][count] = ft_strdup(line[count]);
@@ -31,7 +33,6 @@ static void	ft_cmd_pars(int ac, char **av, t_pipex *pipex)
 	int		arg_pos;
 	char	**tmp;
 
-	pipex->ac = ac;
 	count = 0;
 	arg_pos = 2;
 	while (arg_pos < ac - 1)
@@ -49,20 +50,13 @@ static void	ft_cmd_path(t_pipex *pipex)
 {
 	int count;
 
-	count = 0;
-	while (pipex->cmd[count])
-	{
+	count = -1;
+	while (++count < pipex->cmd_count)
 		pipex->cmd[count] = ft_strjoin("/usr/bin/", pipex->cmd[count]);
-		count++;
-	}
 }
 
 void	ft_pars(int ac, char **av, t_pipex *pipex)
 {
-	pipex->infile = ft_strdup(av[1]);
-	pipex->outfile = ft_strdup(av[ac - 1]);
-	pipex->cmd = malloc(sizeof(char *) * ac - 2);
-	pipex->cmd_args = malloc(sizeof(char **) * ac - 2);
 	ft_cmd_pars(ac, av, pipex);
 	ft_cmd_path(pipex);
 }
