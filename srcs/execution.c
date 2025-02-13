@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_part.c                                        :+:      :+:    :+:   */
+/*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:18:16 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/02/12 16:08:30 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:51:22 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	ft_exec(t_pipex *pipex, int index)
+static int	ft_exec(t_pipex *pipex, int index)
 {
-	execve(pipex->cmd[index], pipex->cmd_args[index], pipex->env);
+	if (pipex->cmd[index] != NULL)
+		execve(pipex->cmd[index], pipex->cmd_args[index], pipex->env);
 	ft_printf(2, "command not found");
-	return(127);
+	return (127);
 }
 
-int	ft_first_cmd(t_pipex *pipex, int *pipe_fd)
+static int	ft_first_cmd(t_pipex *pipex, int *pipe_fd)
 {
-	int fd;
+	int	fd;
 
 	dup2(pipe_fd[1], STDOUT_FILENO);
 	close(pipe_fd[0]);
 	close(pipe_fd[1]);
 	fd = open(pipex->infile, O_RDONLY);
-	if (open < 0)
+	if (fd < 0)
 	{
 		perror("open");
 		return (EXIT_FAILURE);
@@ -37,10 +38,10 @@ int	ft_first_cmd(t_pipex *pipex, int *pipe_fd)
 	return (ft_exec(pipex, 0));
 }
 
-int	ft_second_cmd(t_pipex *pipex, int *pipe_fd)
+static int	ft_second_cmd(t_pipex *pipex, int *pipe_fd)
 {
-	int fd;
-	
+	int	fd;
+
 	dup2(pipe_fd[0], STDIN_FILENO);
 	close(pipe_fd[0]);
 	close(pipe_fd[1]);
@@ -48,14 +49,14 @@ int	ft_second_cmd(t_pipex *pipex, int *pipe_fd)
 	if (fd < 0)
 	{
 		perror("open");
-		return(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
 	return (ft_exec(pipex, 1));
 }
 
-int	ft_children_wait(int pipe_fd[2], int pid1, int pid2)
+static int	ft_children_wait(int pipe_fd[2], int pid1, int pid2)
 {
 	int	status;
 
@@ -63,10 +64,10 @@ int	ft_children_wait(int pipe_fd[2], int pid1, int pid2)
 	close(pipe_fd[1]);
 	waitpid(pid1, &status, 0);
 	waitpid(pid2, &status, 0);
-	return(WEXITSTATUS(status));
+	return (WEXITSTATUS(status));
 }
 
-int	ft_main(t_pipex *pipex)
+int	ft_action(t_pipex *pipex)
 {
 	int		pipe_fd[2];
 	pid_t	pid[2];
@@ -78,18 +79,12 @@ int	ft_main(t_pipex *pipex)
 	}
 	pid[0] = fork();
 	if (pid[0] < 0)
-	{
-		perror("fork");
-		return(EXIT_FAILURE);
-	}
+		return (ft_close_return(pipe_fd));
 	else if (pid[0] == 0)
-		return(ft_first_cmd(pipex, pipe_fd));
+		return (ft_first_cmd(pipex, pipe_fd));
 	pid[1] = fork();
 	if (pid[1] < 0)
-	{
-		perror("fork");
-		return(EXIT_FAILURE);
-	}
+		return (ft_close_return(pipe_fd));
 	else if (pid[1] == 0)
 		return (ft_second_cmd(pipex, pipe_fd));
 	return (ft_children_wait(pipe_fd, pid[0], pid[1]));

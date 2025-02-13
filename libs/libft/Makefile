@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmaksymi <mmaksymi@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 16:51:42 by mmaksymi          #+#    #+#              #
-#    Updated: 2025/02/11 12:27:19 by mmaksymi         ###   ########.fr        #
+#    Updated: 2025/02/13 12:20:28 by mmaksymi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS = ft_isalpha.c \
        ft_memcpy.c \
        ft_memmove.c \
        ft_strlcpy.c \
+	   ft_strcat.c \
        ft_strlcat.c \
        ft_toupper.c \
        ft_tolower.c \

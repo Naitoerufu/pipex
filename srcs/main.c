@@ -6,7 +6,7 @@
 /*   By: mmaksymi <mmaksymi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:23:46 by mmaksymi          #+#    #+#             */
-/*   Updated: 2025/02/12 16:04:26 by mmaksymi         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:53:11 by mmaksymi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ static void	ft_free(t_pipex *pipex)
 {
 	int	count;
 
-	ft_free_split(pipex->cmd);
-	count = -1;
-	while (++count < pipex->cmd_count)
-		ft_free_split(pipex->cmd_args[count]);
+	count = 0;
+	while (count < pipex->cmd_count)
+		free(pipex->cmd[count++]);
+	free(pipex->cmd);
+	count = 0;
+	while (count < pipex->cmd_count)
+		ft_free_split(pipex->cmd_args[count++]);
 	free(pipex->cmd_args);
 	free(pipex->infile);
 	free(pipex->outfile);
@@ -37,7 +40,8 @@ static void	ft_free(t_pipex *pipex)
 
 int	main(int ac, char **av, char **env)
 {
-	t_pipex pipex;
+	t_pipex	pipex;
+	int		output;
 
 	if (ac != 5)
 	{
@@ -45,7 +49,8 @@ int	main(int ac, char **av, char **env)
 		exit(EXIT_FAILURE);
 	}
 	ft_init(&pipex, ac, av, env);
-	ft_pars(ac, av, &pipex);
-	ft_main(&pipex);
+	ft_parse(ac, av, &pipex);
+	output = ft_action(&pipex);
 	ft_free(&pipex);
+	return (output);
 }
